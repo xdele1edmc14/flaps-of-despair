@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7mjoa3km4tmi"]
+
+[ext_resource type="Script" uid="uid://r1y7mbjsbh3h" path="res://scenes/message_popup.gd" id="1_djwqc"]
+[ext_resource type="FontFile" uid="uid://chfh3jnq4bnsm" path="res://assets/Silkscreen-Bold.ttf" id="1_nmaji"]
+[ext_resource type="AudioStream" uid="uid://1w50bl4h0j5j" path="res://assets/audio/sfx/sfx_msg_blip.ogg" id="2_djwqc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v503n"]
+bg_color = Color(0, 0, 0, 1)
+border_color = Color(0.7977576, 0.8008602, 0.8000924, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MessagePopup" type="CanvasLayer"]
+script = ExtResource("1_djwqc")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -275.0
+offset_top = 268.0
+offset_right = 325.0
+offset_bottom = 418.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v503n")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_nmaji")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BlipPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_djwqc")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
