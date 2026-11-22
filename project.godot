@@ -8,18 +8,34 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="flaps-of-despair2.0"
-run/main_scene="uid://tkro4pvr7n8o"
-config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+run/main_scene="res://scenes/app.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://assets/appicon.png"
 
 [display]
 
-window/size/viewport_width=864
-window/size/viewport_height=936
+window/size/viewport_width=540
+window/size/viewport_height=960
+window/size/window_width_override=405
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_overrides]
+
+text_editor/behavior/indent/type=0
+text_editor/behavior/indent/size=4
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

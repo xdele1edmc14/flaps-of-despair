@@ -1,25 +1,25 @@
 extends CanvasLayer
 
-# References
+
 @onready var panel = $Panel
-@onready var label = $Panel/Label
+@onready var label = $Panel / Label
 @onready var blip_player = $BlipPlayer
 
-# State
+
 var is_showing: bool = false
 var can_dismiss: bool = false
 var typewriter_active: bool = false
 
-# Constants
-const CHAR_DELAY: float = 0.05  # seconds per character
-const AUTO_DISMISS_TIME: float = 3.0  # seconds
-const TARGET_ALPHA: float = 0.4  # panel opacity
 
-# Message dictionary - Ember's journey
+const CHAR_DELAY: float = 0.05
+const AUTO_DISMISS_TIME: float = 3.0
+const TARGET_ALPHA: float = 0.4
+
+
 const MESSAGES = {
 	3: "Alright. I've got this.",
 	50: "The air feels good today.",
-	100: "I'm flying better than before.",
+	100: "Huh... this place looks different.",
 	150: "This isn't so hard.",
 	200: "I'll reach her soon.",
 	250: "Just keep going.",
@@ -41,10 +41,10 @@ const MESSAGES = {
 }
 
 func _ready():
-	# Hide popup initially
+
 	hide_popup()
 
-func show_message(score: int) -> void:
+func show_message(score: int) -> void :
 	if is_showing or not MESSAGES.has(score):
 		return
 
@@ -57,12 +57,12 @@ func show_message(score: int) -> void:
 	panel.modulate.a = 0.0
 	visible = true
 
-	# Fade in
+
 	var tween_in = create_tween()
 	tween_in.tween_property(panel, "modulate:a", TARGET_ALPHA, 0.25)
 	await tween_in.finished
 
-	# Typewriter effect
+
 	for i in text.length():
 		label.text += text[i]
 		if text[i] != " ":
@@ -72,12 +72,12 @@ func show_message(score: int) -> void:
 	typewriter_active = false
 	can_dismiss = true
 
-	# Auto-dismiss after AUTO_DISMISS_TIME
+
 	await get_tree().create_timer(AUTO_DISMISS_TIME).timeout
 	if is_showing:
 		dismiss_popup()
 
-func dismiss_popup() -> void:
+func dismiss_popup() -> void :
 	if not is_showing:
 		return
 
@@ -86,7 +86,7 @@ func dismiss_popup() -> void:
 	await tween_out.finished
 	hide_popup()
 
-func hide_popup() -> void:
+func hide_popup() -> void :
 	visible = false
 	is_showing = false
 	can_dismiss = false
@@ -95,5 +95,5 @@ func hide_popup() -> void:
 
 func _input(event):
 	if is_showing and can_dismiss:
-		if event is InputEventMouseButton and event.pressed:
+		if (event is InputEventMouseButton or event is InputEventScreenTouch) and event.pressed:
 			dismiss_popup()

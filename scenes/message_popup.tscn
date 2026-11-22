@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7mjoa3km4tmi"]
+[gd_scene format=3 uid="uid://b7mjoa3km4tmi"]
 
-[ext_resource type="Script" uid="uid://r1y7mbjsbh3h" path="res://scenes/message_popup.gd" id="1_djwqc"]
-[ext_resource type="FontFile" uid="uid://chfh3jnq4bnsm" path="res://assets/Silkscreen-Bold.ttf" id="1_nmaji"]
-[ext_resource type="AudioStream" uid="uid://1w50bl4h0j5j" path="res://assets/audio/sfx/sfx_msg_blip.ogg" id="2_djwqc"]
+[ext_resource type="Script" uid="uid://r1y7mbjsbh3h" path="res://scenes/message_popup.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://chfh3jnq4bnsm" path="res://assets/Silkscreen-Bold.ttf" id="2"]
+[ext_resource type="AudioStream" uid="uid://1w50bl4h0j5j" path="res://assets/audio/sfx/sfx_msg_blip.ogg" id="3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v503n"]
 bg_color = Color(0, 0, 0, 1)
@@ -12,10 +12,10 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[node name="MessagePopup" type="CanvasLayer"]
-script = ExtResource("1_djwqc")
+[node name="MessagePopup" type="CanvasLayer" unique_id=430451823]
+script = ExtResource("1")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=390109034]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -29,22 +29,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_v503n")
 
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="Panel" unique_id=629283732]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_nmaji")
+theme_override_fonts/font = ExtResource("2")
 theme_override_font_sizes/font_size = 24
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="BlipPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_djwqc")
+[node name="BlipPlayer" type="AudioStreamPlayer2D" parent="." unique_id=996752393]
+stream = ExtResource("3")
 volume_db = 10.0
 bus = &"SFX"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1491686274]

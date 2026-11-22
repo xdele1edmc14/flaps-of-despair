@@ -1,21 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsr4c85gi3mmv"]
+[gd_scene format=3 uid="uid://bsr4c85gi3mmv"]
 
-[ext_resource type="Script" uid="uid://de43c5q08o6us" path="res://game_over.gd" id="1_wqhvx"]
-[ext_resource type="Texture2D" uid="uid://c2rnvlukuq028" path="res://assets/restart.png" id="2_tbwuq"]
+[ext_resource type="Script" uid="uid://de43c5q08o6us" path="res://game_over.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c2rnvlukuq028" path="res://assets/restart.png" id="2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_racf3"]
-texture = ExtResource("2_tbwuq")
+texture = ExtResource("2")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7m3ot"]
-texture = ExtResource("2_tbwuq")
+texture = ExtResource("2")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v3hpu"]
-texture = ExtResource("2_tbwuq")
+texture = ExtResource("2")
 
-[node name="GameOver" type="CanvasLayer"]
-script = ExtResource("1_wqhvx")
+[node name="GameOver" type="CanvasLayer" unique_id=2142737095]
+script = ExtResource("1")
 
-[node name="RestartButton" type="Button" parent="."]
+[node name="RestartButton" type="Button" parent="." unique_id=115217708]
 offset_top = 10.0
 offset_right = 119.0
 offset_bottom = 60.0
